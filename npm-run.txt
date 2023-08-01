@@ -1,0 +1,60 @@
+npx tailwindcss -i ./public/css/tailwind.css -o ./public/css/style.css --watch
+
+
+
+NODE.JS
+npm init
+npm install
+
+npm install --save express
+npm install --save-dev nodemon
+npm install -g nodemon
+npm install --save body-parser
+npm install --save ejs pug express-handlebars
+npm install --save express-handlebars@3.0
+npm install --save mongodb
+npm install --save mongoose
+npm install --save express-session
+npm install --save connect-mongodb-session
+npm install --save bcryptjs
+npm install --save csurf
+npm install --save connect-flash
+npm install --save nodemailer nodemailer-sendgrid-transport
+npm install --save express-validator
+npm install --save multer
+npm install --save pdfkit                       for creating pdfs
+npm install --save stripe                       for payment
+npm install --save helmet                     for safety
+npm install --save compression          for compression
+npm install --save morgan                    for logging
+
+
+npm install --save uuid   --> windows image names
+npm install --save jsonwebtoken
+npm install --save socket.io                    -->backend
+npm install --save socket.io-client         -->frontend
+
+
+npm install --save graphql express-graphql
+npm install --save validator
+npm install --save-dev sinon              for testing
+npm install --save-dev mocha chai        for testing
+postman                                                    for testing apis
+
+
+npm run build      for optimized code
+npm install -g typescript
+tsc --init
+npm install --save-dev @types/node
+npm install --save-dev @types/express
+npm install --save-dev @types/body-parser
+
+openssl req -nodes -new -x509 -keyout server.key -out server.cert
+
+
+mongodb+srv://serkankorkut:118909Gs.@serkan.dipkqr1.mongodb.net/?retryWrites=true&w=majority
+
+
+
+graphql  ==> subscriptions
+npm install tailwindcss postcss autoprefixer postcss-cli

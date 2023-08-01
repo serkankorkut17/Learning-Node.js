@@ -1,0 +1,33 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  darkMode: 'class',
+  content: ['./views/*.ejs', './node_modules/flowbite/**/*.js'],
+  theme: {
+    extend: {},
+  },
+  plugins: [require('flowbite/plugin')],
+  safelist: [
+    'top-[0%]',
+    'top-[10%]',
+    'top-[20%]',
+    'top-[30%]',
+    'top-[40%]',
+    'top-[50%]',
+    'top-[60%]',
+    'top-[70%]',
+    'top-[80%]',
+    'top-[90%]',
+    'top-[100%]',
+    'left-[0%]',
+    'left-[10%]',
+    'left-[20%]',
+    'left-[30%]',
+    'left-[40%]',
+    'left-[50%]',
+    'left-[60%]',
+    'left-[70%]',
+    'left-[80%]',
+    'left-[90%]',
+    'left-[100%]',
+  ],
+};
