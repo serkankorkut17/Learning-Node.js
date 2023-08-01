@@ -9,6 +9,8 @@ const multer = require('multer');
 const cookieParser = require('cookie-parser');
 
 const authRoutes = require('./routes/auth');
+const userRoutes = require('./routes/user');
+const isAuth = require('./middleware/is-auth');
 const User = require('./models/user');
 
 const app = express();
@@ -98,21 +100,33 @@ app.post('/dark-mode', (req, res, next) => {
   res.redirect(backURL);
 });
 
-app.get('/', (req, res, next) => {
-  res.render('main', {
-    pageTitle: 'Twitter',
-    path: '/',
-  });
-});
+/* app.get('/', (req, res, next) => {
+  if (req.session.isLoggedIn) {
+    res.render('tweets', {
+      pageTitle: 'Twitter',
+      path: '/',
+      oldInput: {
+        tweet_content: '',
+      },
+      errorMessage: '',
+      validationErrors: [],
+    });
+  } else {
+    res.render('main', {
+      pageTitle: 'Twitter',
+      path: '/',
+    });
+  }
+}); */
 
-/* app.use(userRoutes); */
 app.use(authRoutes);
+app.use(userRoutes);
 app.get('/500', errorController.get500);
 app.use('/404', errorController.get404);
 
-app.all('*', function (req, res) {
+/* app.all('*', function (req, res) {
   res.redirect('/404');
-});
+}); */
 
 /* app.use((error, req, res, next) => {
   //res.status(error.httpStatusCode).render(...);
