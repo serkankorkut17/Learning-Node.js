@@ -3,292 +3,69 @@
   <%- include('./includes/head.ejs') %>
   <body>
     <%- include('./includes/main-nav.ejs') %> <%- include('./includes/aside.ejs') %>
-
-    <div class="p-4 sm:ml-64 dark:bg-gray-900">
-      <div
-        class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14"
-      >
-        <div class="grid grid-cols-3 gap-4 mb-4">
-          <div
-            class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800"
-          >
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-              <svg
-                class="w-3.5 h-3.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 18 18"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 1v16M1 9h16"
-                />
-              </svg>
-            </p>
-          </div>
-          <div
-            class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800"
-          >
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-              <svg
-                class="w-3.5 h-3.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 18 18"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 1v16M1 9h16"
-                />
-              </svg>
-            </p>
-          </div>
-          <div
-            class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800"
-          >
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-              <svg
-                class="w-3.5 h-3.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 18 18"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 1v16M1 9h16"
-                />
-              </svg>
-            </p>
-          </div>
-        </div>
+    <main>
+      <div class="overflow-auto h-screen p-4 sm:ml-64 dark:bg-gray-900">
         <div
-          class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800"
+          class="overflow-auto p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14"
         >
-          <p class="text-2xl text-gray-400 dark:text-gray-500">
-            <svg
-              class="w-3.5 h-3.5"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 18 18"
-            >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 1v16M1 9h16"
-              />
-            </svg>
-          </p>
-        </div>
-        <div class="grid grid-cols-2 gap-4 mb-4">
-          <div
-            class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"
-          >
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-              <svg
-                class="w-3.5 h-3.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 18 18"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 1v16M1 9h16"
-                />
-              </svg>
-            </p>
+          <div class="p-8 w-fit m-auto">
+            <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Hemen üye ol! <mark class="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">Twitter</mark> geri döndü.</h1>
           </div>
-          <div
-            class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"
-          >
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-              <svg
-                class="w-3.5 h-3.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 18 18"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 1v16M1 9h16"
-                />
-              </svg>
-            </p>
+          <div class="pb-8 w-fit m-auto" >
+            <a href="#" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-2xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+              <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="/images/Mr-Morgan.gif" alt="">
+              <div class="flex flex-col justify-between p-4 leading-normal">
+                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Saygılar: Arthur Morgan</h5>
+                  <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+              </div>
+            </a>
           </div>
-          <div
-            class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"
-          >
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-              <svg
-                class="w-3.5 h-3.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 18 18"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 1v16M1 9h16"
-                />
-              </svg>
-            </p>
-          </div>
-          <div
-            class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"
-          >
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-              <svg
-                class="w-3.5 h-3.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 18 18"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 1v16M1 9h16"
-                />
-              </svg>
-            </p>
-          </div>
-        </div>
-        <div
-          class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800"
-        >
-          <p class="text-2xl text-gray-400 dark:text-gray-500">
-            <svg
-              class="w-3.5 h-3.5"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 18 18"
-            >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 1v16M1 9h16"
-              />
-            </svg>
-          </p>
-        </div>
-        <div class="grid grid-cols-2 gap-4">
-          <div
-            class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"
-          >
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-              <svg
-                class="w-3.5 h-3.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 18 18"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 1v16M1 9h16"
-                />
-              </svg>
-            </p>
-          </div>
-          <div
-            class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"
-          >
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-              <svg
-                class="w-3.5 h-3.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 18 18"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 1v16M1 9h16"
-                />
-              </svg>
-            </p>
-          </div>
-          <div
-            class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"
-          >
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-              <svg
-                class="w-3.5 h-3.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 18 18"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 1v16M1 9h16"
-                />
-              </svg>
-            </p>
-          </div>
-          <div
-            class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"
-          >
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-              <svg
-                class="w-3.5 h-3.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 18 18"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 1v16M1 9h16"
-                />
-              </svg>
-            </p>
-          </div>
+          <div class="pb-8 w-fit m-auto">
+            <p class="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
+              İnsan yalnız doğar da yalnız ölmezmiş, n'aber?<br>
+              Bizden uzak olsun keder<br>
+              Sormana hiç gerek yok, yanmışım, tarifi zor<br>
+              Söylerim günde bin kere<br><br>
+              Yüzün gülünce güneş doğar ya<br>
+              Gözlerimi kısarım, güller açar bir anda<br>
+              İşte seninle bir ömür böyle<br>
+              Güller, güneşler dolup ellerimizde<br><br>
+              Söylenmedi hiç<br>
+              Sana layık düşler benden önce<br>
+              Tutsak yüreğim<br>
+              Biliyorsun sen de ince ince<br><br>
+              Yangın yeri hep<br>
+              Buralar sayende, yok şikâyet<br>
+              Gel bir sarayım<br>
+              Aşkın olayım<br><br>
+              İnsan yalnız doğar da yalnız ölmezmiş, n'aber?<br>
+              Bizden uzak olsun keder<br>
+              Sormana hiç gerek yok, yanmışım, tarifi zor<br>
+              Söylerim günde bin kere<br><br>
+              Yüzün gülünce güneş doğar ya<br>
+              Gözlerimi kısarım, güller açar bir anda<br>
+              İşte seninle bir ömür böyle<br>
+              Günler, güneşler dolup ellerimizde<br><br>
+              Söylenmedi hiç<br>
+              Sana layık düşler benden önce<br>
+              Tutsak yüreğim<br>
+              Biliyorsun sen de ince ince<br><br>
+              Yangın yeri hep<br>
+              Buralar sayende, yok şikâyet<br>
+              Gel bir sarayım<br>
+              Aşkın olayım<br><br>
+              Söylenmedi hiç<br>
+              Sana layık düşler benden önce<br>
+              Tutsak yüreğim<br>
+              Biliyorsun sen de ince ince<br><br>
+              Yangın yeri hep<br>
+              Buralar sayende, yok şikâyet<br>
+              Gel bir sarayım<br>
+              Aşkın olayım</p>
+            </div>
         </div>
       </div>
-    </div>
+    </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
   </body>
 </html>
