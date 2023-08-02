@@ -24,6 +24,7 @@
         <!-- <label for="tweet_content" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your tweet</label> -->
         <textarea
           id="tweet_content"
+          name="tweet_content"
           rows="6"
           class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="What's happening?"
@@ -73,6 +74,7 @@
     </div>
   </form>
 </div>
+<% if (tweets.length > 0) { %> <% for (let tweet of tweets) { %>
 <div
   class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-4 w-full"
 >
@@ -80,37 +82,34 @@
     <!-- items-center md:max-w-fit-->
     <a
       href="#"
-      class="flex flex-col bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-fit hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 mx-auto h-full"
+      class="flex flex-col bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-fit hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 mx-auto h-full max-w-screen-md justify-between"
     >
       <div class="flex flex-col h-full p-4 leading-normal">
         <div class="flex">
           <img
             class="w-8 h-8 rounded-full basis-auto"
-            src="<%= user.imageUrl %>"
-            alt="user photo"
+            src="<%= tweet.creator.imageUrl %>"
+            alt="tweet owner photo"
           />
           <h5
             class="basis-full px-4 mb-2 text-xl font-bold tracking-tight text-sky-500 dark:text-white justify-self-start self-start"
           >
-            <%= user.firstName + " " + user.lastName%>
+            <%= tweet.creator.firstName + " " + tweet.creator.lastName %>
           </h5>
         </div>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          Here are the biggest enterprise technology acquisitions of 2021 so
-          far, in reverse chronological order.Here are the biggest enterprise
-          technology acquisitions of 2021 so far, in reverse chronological
-          order.Here are the biggest enterprise technology acquisitions of 2021
-          so far, in reverse chronological order.Here are the biggest enterprise
-          technology acquisitions of 2021 so far, in reverse chronological
-          order.
+          <%= tweet.content %>
         </p>
       </div>
+      <% if (tweet.imageUrl) { %>
       <img
         class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-        src="/images/ggez.jpeg"
+        src="<%= tweet.imageUrl %>"
         alt=""
       />
+      <% } %>
     </a>
   </div>
 </div>
-<%- include('./includes/last.ejs') %>
+
+<% } %> <% } %> <%- include('./includes/last.ejs') %>

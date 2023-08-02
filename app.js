@@ -37,6 +37,7 @@ const fileStorage = multer.diskStorage({
   filename: (req, file, cb) => {
     const dateStr = new Date().toISOString().replace(/:/g, '-');
     cb(null, dateStr + '-' + file.originalname);
+    /* cb(null, dateStr); */
   },
 });
 
@@ -44,6 +45,7 @@ const fileFilter = (req, file, cb) => {
   if (
     file.mimetype === 'image/png' ||
     file.mimetype === 'image/jpg' ||
+    file.mimetype === 'image/gif' ||
     file.mimetype === 'image/jpeg'
   ) {
     cb(null, true);
@@ -124,9 +126,9 @@ app.use(userRoutes);
 app.get('/500', errorController.get500);
 app.use('/404', errorController.get404);
 
-app.all('*', function (req, res) {
+/* app.all('*', function (req, res) {
   res.redirect('/404');
-});
+}); */
 
 /* app.use((error, req, res, next) => {
   //res.status(error.httpStatusCode).render(...);

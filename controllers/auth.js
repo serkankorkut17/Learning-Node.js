@@ -60,7 +60,7 @@ exports.postSignup = (req, res, next) => {
   const errors = validationResult(req);
   console.log(errors.array());
 
-  const imageUrl = image.path;
+  let imageUrl = image.path;
   if (!errors.isEmpty()) {
     fileHelper.deleteFile(imageUrl);
     return res.status(422).render('signup', {
@@ -77,6 +77,9 @@ exports.postSignup = (req, res, next) => {
       validationErrors: errors.array(),
     });
   }
+
+  fileHelper.moveFile(imageUrl, 'images/avatars/' + image.filename);
+  imageUrl = 'images/avatars/' + image.filename;
 
   bcrypt
     .hash(password, 12)
