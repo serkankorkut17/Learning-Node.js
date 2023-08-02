@@ -1,88 +1,116 @@
-<!DOCTYPE html>
-<html lang="en" class=<%= darkMode ? "dark":"" %>>
-  <%- include('./includes/head.ejs') %>
-  <body>
-    <%- include('./includes/main-nav.ejs') %> <%- include('./includes/aside.ejs') %>
-    <main class="w-auto">
-      <div class="overflow-auto h-screen p-4 sm:ml-64 dark:bg-gray-900 flex flex-col">
-        <div
-          class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14"
+<%- include('./includes/first.ejs') %>
+<div
+  class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14 flex flex-col"
+>
+  <form action="/post-tweet" method="POST" enctype="multipart/form-data">
+    <div
+      class="grid gap-6 mb-6 md:grid-cols-10 md:grid-rows-4 max-md:grid-cols-1"
+    >
+      <div
+        class="md:col-span-1 md:row-span-2 justify-self-center self-center max-md:row-start-1"
+      >
+        <button
+          type="button"
+          class="flex text-sm bg-gray-800 rounded-full hover:ring-4 hover:ring-gray-300 dark:focus:ring-gray-600"
         >
-        <form action="/post-tweet" method="POST" enctype="multipart/form-data">
-          <div class="grid gap-6 mb-6 md:grid-cols-10 md:grid-rows-4 max-md:grid-cols-1">
-            <div class="md:col-span-1 md:row-span-2 justify-self-center self-center max-md:row-start-1">
-              <button
-                type="button"
-                class="flex text-sm bg-gray-800 rounded-full hover:ring-4 hover:ring-gray-300 dark:focus:ring-gray-600"
-              >
-                <img
-                  class="w-12 h-12 rounded-full"
-                  src="<%= user.imageUrl %>"
-                  alt="user photo"
-                />
-              </button>
-            </div>
-            <div class="md:col-span-8 md:row-span-4 max-md:row-start-2">
-              <!-- <label for="tweet_content" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your tweet</label> -->
-              <textarea id="tweet_content" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="What's happening?" required></textarea>
-            </div>
-            <div class="md:col-span-1 md:row-span-4 justify-self-center self-center max-md:row-start-4">
-              <button
-                type="submit"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-3xl text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 col-span-1 row-span-2"
-              >
-                Tweet
-              </button>
-            </div>
-            <div class="md:col-span-1 md:row-span-2 justify-self-center self-center max-md:row-start-3">
-              <label for="file-input">
-                <svg class="w-12 h-12 text-gray-800 dark:text-white " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
-                  <path d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z"/>
-                  <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z"/>
-                </svg>
-              </label>
-            
-              <input id="file-input" type="file" class="hidden" aria-describedby="file_input_help"
-              id="file_input"
-              type="file"
-              name="image"/>
-            </div>
-            <!-- <div class="col-start-2 col-end-4">
-              <label
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                for="file_input"
-                >Upload image (Optional)</label
-              >
-              <input
-                class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                aria-describedby="file_input_help"
-                id="file_input"
-                type="file"
-                name="image"
-              />
-            </div> -->
-          </div>
-        </form>
-        </div>
-        <div
-          class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-4"
-        >
-        <!-- h-96 md:w-48 w-full-->
-          <div class="w-full grid">
-            <a href="#" class=" bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 block w-full">
-              <div class="grid grid-flow-col w-full">
-                <img class="justify-self-center self-center object-cover w-full h-auto rounded-t-lg md:h-auto md:rounded-none md:rounded-l-lg" src="/images/ggez.jpeg" alt="">
-                <div class="flex flex-col justify-between p-4 leading-normal">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                </div>
-              </div>
-            </a>
-          </div>
-
-        </div>
+          <img
+            class="w-12 h-12 rounded-full"
+            src="<%= user.imageUrl %>"
+            alt="user photo"
+          />
+        </button>
       </div>
-    </main>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
-  </body>
-</html>
+      <div class="md:col-span-8 md:row-span-4 max-md:row-start-2">
+        <!-- <label for="tweet_content" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your tweet</label> -->
+        <textarea
+          id="tweet_content"
+          rows="6"
+          class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="What's happening?"
+          required
+        ></textarea>
+      </div>
+      <div
+        class="md:col-span-1 md:row-span-4 justify-self-center self-center max-md:row-start-4"
+      >
+        <button
+          type="submit"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-3xl text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 col-span-1 row-span-2"
+        >
+          Tweet
+        </button>
+      </div>
+      <div
+        class="md:col-span-1 md:row-span-2 justify-self-center self-center max-md:row-start-3"
+      >
+        <label for="file-input">
+          <svg
+            class="w-12 h-12 text-gray-800 dark:text-white"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 16 20"
+          >
+            <path
+              d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z"
+            />
+            <path
+              d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z"
+            />
+          </svg>
+        </label>
+
+        <input
+          id="file-input"
+          type="file"
+          class="hidden"
+          aria-describedby="file_input_help"
+          id="file_input"
+          type="file"
+          name="image"
+        />
+      </div>
+    </div>
+  </form>
+</div>
+<div
+  class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-4 w-full"
+>
+  <div class="w-full mx-auto">
+    <!-- items-center md:max-w-fit-->
+    <a
+      href="#"
+      class="flex flex-col bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-fit hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 mx-auto h-full"
+    >
+      <div class="flex flex-col h-full p-4 leading-normal">
+        <div class="flex">
+          <img
+            class="w-8 h-8 rounded-full basis-auto"
+            src="<%= user.imageUrl %>"
+            alt="user photo"
+          />
+          <h5
+            class="basis-full px-4 mb-2 text-xl font-bold tracking-tight text-sky-500 dark:text-white justify-self-start self-start"
+          >
+            <%= user.firstName + " " + user.lastName%>
+          </h5>
+        </div>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          Here are the biggest enterprise technology acquisitions of 2021 so
+          far, in reverse chronological order.Here are the biggest enterprise
+          technology acquisitions of 2021 so far, in reverse chronological
+          order.Here are the biggest enterprise technology acquisitions of 2021
+          so far, in reverse chronological order.Here are the biggest enterprise
+          technology acquisitions of 2021 so far, in reverse chronological
+          order.
+        </p>
+      </div>
+      <img
+        class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+        src="/images/ggez.jpeg"
+        alt=""
+      />
+    </a>
+  </div>
+</div>
+<%- include('./includes/last.ejs') %>

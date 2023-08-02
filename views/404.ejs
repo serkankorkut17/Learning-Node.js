@@ -1,18 +1,11 @@
-<!DOCTYPE html>
-<html lang="en" class=<%= darkMode ? "dark":"" %>>
-  <%- include('./includes/head.ejs') %>
-  </head>
-  <body>
-    <%- include('./includes/main-nav.ejs') %> <%- include('./includes/aside.ejs') %>
-
-    <div class="h-screen p-16 sm:ml-64 dark:bg-gray-900">
-      <div
-        class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14"
-      >
-        <h1 class="mb-4 text-center text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">404</h1>
-        <!-- <p class="text-center text-9xl text-gray-900 dark:text-white font-extrabold">404</p> -->
-      </div>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
-  </body>
-</html>
+<%- include('./includes/first.ejs') %>
+<div
+  class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14 flex flex-col"
+>
+  <h1
+    class="mb-4 text-center text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white"
+  >
+    404 - Hoba nereye gidiyon?
+  </h1>
+</div>
+<%- include('./includes/last.ejs') %>
