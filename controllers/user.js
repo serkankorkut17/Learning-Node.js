@@ -56,3 +56,12 @@ exports.postTweet = (req, res, next) => {
       return next(error);
     });
 };
+
+exports.getOneTweet = async (req, res, next) => {
+  const tweets = await Tweet.find().populate('creator').sort({ createdAt: -1 });
+  res.render('tweet', {
+    pageTitle: 'Twitter',
+    path: '/one-tweet/',
+    tweet: tweets[1],
+  });
+};
