@@ -1724,6 +1724,10 @@ input.valid:focus {
   --tw-bg-opacity: 0.5;
 }
 
+.fill-amber-200 {
+  fill: #fde68a;
+}
+
 .fill-rose-800 {
   fill: #9f1239;
 }
@@ -2257,34 +2261,6 @@ input.valid:focus {
     width: 12rem;
   }
 
-  .md\:w-96 {
-    width: 24rem;
-  }
-
-  .md\:w-64 {
-    width: 16rem;
-  }
-
-  .md\:w-72 {
-    width: 18rem;
-  }
-
-  .md\:w-6\/12 {
-    width: 50%;
-  }
-
-  .md\:w-3\/5 {
-    width: 60%;
-  }
-
-  .md\:w-2\/3 {
-    width: 66.666667%;
-  }
-
-  .md\:w-auto {
-    width: auto;
-  }
-
   .md\:max-w-2xl {
     max-width: 42rem;
   }
@@ -2292,10 +2268,6 @@ input.valid:focus {
   .md\:max-w-fit {
     max-width: -moz-fit-content;
     max-width: fit-content;
-  }
-
-  .md\:max-w-md {
-    max-width: 28rem;
   }
 
   .md\:max-w-lg {
