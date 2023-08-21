@@ -15,6 +15,18 @@ router.post(
       .isAlpha()
       .withMessage('Please enter a valid first name.'),
     body('last_name').isAlpha().withMessage('Please enter a valid last name.'),
+    body('nickname')
+      .isAlphanumeric()
+      .withMessage('Please enter a valid nickname.')
+      .custom((value, { req }) => {
+        return User.findOne({ nickname: value }).then(userDoc => {
+          if (userDoc) {
+            return Promise.reject(
+              'Nickname exists already, please pick a different one.'
+            );
+          }
+        });
+      }),
     body('email')
       .isEmail()
       .withMessage('Please enter a valid email address.')
@@ -34,6 +46,9 @@ router.post(
     )
       .isLength({ min: 8 })
       .isAlphanumeric()
+      .withMessage(
+        'Please enter a password with only numbers and text and at least 8 characters.'
+      )
       .trim(),
     body('confirm_password')
       .trim()

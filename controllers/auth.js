@@ -11,6 +11,7 @@ exports.getSignup = (req, res, next) => {
     oldInput: {
       first_name: '',
       last_name: '',
+      nickname: '',
       email: '',
       password: '',
       confirmPassword: '',
@@ -37,6 +38,7 @@ exports.postSignup = (req, res, next) => {
   const firstName = req.body.first_name;
   const lastName = req.body.last_name;
   const image = req.file;
+  const nickname = req.body.nickname;
   const email = req.body.email;
   const password = req.body.password;
   const confirmPassword = req.body.confirm_password;
@@ -48,6 +50,7 @@ exports.postSignup = (req, res, next) => {
       oldInput: {
         first_name: firstName,
         last_name: lastName,
+        nickname: nickname,
         email: email,
         password: password,
         confirmPassword: confirmPassword,
@@ -58,7 +61,11 @@ exports.postSignup = (req, res, next) => {
   }
 
   const errors = validationResult(req);
-  console.log(errors.array());
+
+  /* const errorsArray = errors.array();
+  console.log(errorsArray);
+  console.log('---------------------');
+  console.log(errorsArray.find(e => e.path === 'nickname')); */
 
   let imageUrl = image.path;
   if (!errors.isEmpty()) {
@@ -69,6 +76,7 @@ exports.postSignup = (req, res, next) => {
       oldInput: {
         first_name: firstName,
         last_name: lastName,
+        nickname: nickname,
         email: email,
         password: password,
         confirmPassword: confirmPassword,
@@ -88,6 +96,7 @@ exports.postSignup = (req, res, next) => {
         firstName: firstName,
         lastName: lastName,
         imageUrl: imageUrl,
+        nickname: nickname,
         email: email,
         password: hashedPassword,
       });

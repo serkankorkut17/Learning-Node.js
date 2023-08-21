@@ -10,6 +10,10 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  nickname: {
+    type: String,
+    required: true,
+  },
   email: {
     type: String,
     required: true,
@@ -23,6 +27,12 @@ const userSchema = new Schema({
     required: true,
   },
   tweets: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Tweet',
+    },
+  ],
+  savedTweets: [
     {
       type: Schema.Types.ObjectId,
       ref: 'Tweet',

@@ -1,0 +1,118 @@
+<%- include('./includes/first.ejs') %>
+<div
+  class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14 flex flex-col"
+>
+  <div class="mx-auto">
+    <img
+      class="rounded-full w-96 h-96"
+      src="/<%= userProfile.imageUrl %>"
+      alt="user profile photo"
+    />
+  </div>
+  <div class="px-4 py-3 mx-auto">
+    <p class="text-lg text-gray-900 dark:text-white">
+      <%= userProfile.firstName+ ' ' + userProfile.lastName %>
+    </p>
+    <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300">
+      <%= userProfile.nickname %>
+    </p>
+    <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300">
+      <%= userProfile.email %>
+    </p>
+  </div>
+</div>
+<% if (tweets.length > 0) { %> <% for(let tweet of tweets) { %>
+<div
+  class="overflow-auto p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-4 flex flex-col"
+>
+  <div class="w-full mx-auto">
+    <a
+      href="/<%= user.nickname %>/<%= tweet._id %>"
+      class="flex flex-col bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-fit hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 mx-auto h-full max-w-screen-md justify-between"
+    >
+      <div class="flex flex-col h-full p-4 leading-normal">
+        <div class="flex">
+          <img
+            class="w-8 h-8 rounded-full basis-auto"
+            src="<%= tweet.creator.imageUrl %>"
+            alt="tweet owner photo"
+          />
+          <h5
+            class="basis-full px-4 mb-2 text-xl font-bold tracking-tight text-sky-500 dark:text-white justify-self-start self-start"
+          >
+            <%= tweet.creator.firstName + " " + tweet.creator.lastName %>
+          </h5>
+        </div>
+        <p
+          class="break-words break-all mb-3 font-normal text-gray-700 dark:text-gray-400"
+        >
+          <%= tweet.content %>
+        </p>
+      </div>
+      <% if (tweet.imageUrl) { %>
+      <img
+        class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+        src="<%= tweet.imageUrl %>"
+        alt="tweet image"
+      />
+      <% } %>
+    </a>
+    <div class="grid grid-cols-3 gap-x-1 place-items-center mt-2">
+      <form action="/like-tweet" method="POST">
+        <button class="hover:bg-gray-100 dark:hover:bg-gray-700">
+          <svg
+            class="w-6 h-6 text-gray-800 dark:text-white fill-rose-800"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 21 19"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M11 4C5.5-1.5-1.5 5.5 4 11l7 7 7-7c5.458-5.458-1.542-12.458-7-7Z"
+            />
+          </svg>
+        </button>
+      </form>
+      <button class="hover:bg-gray-100 dark:hover:bg-gray-700">
+        <svg
+          class="w-6 h-6 text-gray-800 dark:text-white"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 20 18"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M5 5h9M5 9h5m8-8H2a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h4l3.5 4 3.5-4h5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1Z"
+          />
+        </svg>
+      </button>
+      <button class="hover:bg-gray-100 dark:hover:bg-gray-700">
+        <svg
+          class="w-6 h-6 text-gray-800 dark:text-white fill-sky-400"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 14 20"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m13 19-6-5-6 5V2a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17Z"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<% } %> <% } %> <%- include('./includes/last.ejs') %>

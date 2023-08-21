@@ -18,11 +18,11 @@
         placeholder="john.doe@mail.com"
         required
       />
-      <p
-        class="mt-2 text-sm text-red-600 dark:text-red-500 <%= validationErrors.find(e => e.path === 'email') ? '' : 'hidden' %>"
-      >
-        Please enter a valid email address.
+      <% if (validationErrors.find(e => e.path === 'email')) { %>
+      <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+        <%= validationErrors.find(e => e.path === 'email').msg %>
       </p>
+      <% } %>
     </div>
     <div class="mb-6">
       <label
@@ -39,11 +39,11 @@
         placeholder="•••••••••"
         required
       />
-      <p
-        class="mt-2 text-sm text-red-600 dark:text-red-500 <%= validationErrors.find(e => e.path === 'password') ? '' : 'hidden' %>"
-      >
-        Password has to be valid.
+      <% if (validationErrors.find(e => e.path === 'password')) { %>
+      <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+        <%= validationErrors.find(e => e.path === 'password').msg %>
       </p>
+      <% } %>
     </div>
     <div class="grid place-items-center">
       <p

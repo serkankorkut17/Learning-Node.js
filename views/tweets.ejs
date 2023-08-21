@@ -15,7 +15,7 @@
         >
           <img
             class="w-12 h-12 rounded-full"
-            src="<%= user.imageUrl %>"
+            src="/<%= user.imageUrl %>"
             alt="user photo"
           />
         </button>
@@ -81,14 +81,14 @@
   <div class="w-full mx-auto">
     <!-- items-center md:max-w-fit-->
     <a
-      href="#"
+      href="/<%= tweet.creator.nickname %>/<%= tweet._id %>"
       class="flex flex-col bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-fit hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 mx-auto h-full max-w-screen-md justify-between"
     >
       <div class="flex flex-col h-full p-4 leading-normal">
         <div class="flex">
           <img
             class="w-8 h-8 rounded-full basis-auto"
-            src="<%= tweet.creator.imageUrl %>"
+            src="/<%= tweet.creator.imageUrl %>"
             alt="tweet owner photo"
           />
           <h5
@@ -106,8 +106,8 @@
       <% if (tweet.imageUrl) { %>
       <img
         class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-        src="<%= tweet.imageUrl %>"
-        alt=""
+        src="/<%= tweet.imageUrl %>"
+        alt="tweet image"
       />
       <% } %>
     </a>

@@ -1,0 +1,33 @@
+<%- include('./includes/first.ejs') %>
+<div
+  class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14 flex flex-col"
+>
+  <ul class="max-w-md divide-y divide-gray-200 dark:divide-gray-700">
+    <% for (user of users) { %>
+    <li class="p-4 sm:p-8">
+      <a
+        class="flex items-center space-x-4 hover:bg-gray-100 dark:hover:bg-gray-700"
+        href="/<%= user.nickname %>"
+      >
+        <div class="flex-shrink-0">
+          <img
+            class="w-16 h-16 rounded-full"
+            src="<%= user.imageUrl %>"
+            alt="user image"
+          />
+        </div>
+        <div class="flex-1 min-w-0">
+          <p
+            class="text-base font-medium text-gray-900 truncate dark:text-white"
+          >
+            <%= user.firstName + " " + user.lastName %>
+          </p>
+          <p class="text-base text-gray-500 truncate dark:text-gray-400">
+            <%= user.email %>
+          </p>
+        </div>
+      </a>
+    </li>
+    <% } %>
+  </ul>
+</div>
