@@ -43,4 +43,6 @@ router.param('tweetId', (req, res, next, tweetId) => {
 });
 router.get('/:userNickname/:tweetId', isAuth, userController.getOneTweet);
 
+router.post('/:userNickname/:tweetId/like', isAuth, userController.likeTweet);
+
 module.exports = router;

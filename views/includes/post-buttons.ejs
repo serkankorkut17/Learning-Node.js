@@ -1,9 +1,17 @@
 <div class="grid grid-cols-3 gap-x-1 place-items-center mt-4">
+  <input
+    type="hidden"
+    value="<%= tweet.creator.nickname %>"
+    name="creatorNickname"
+  />
+  <input type="hidden" value="<%= tweet._id %>" name="tweetId" />
+  <input type="hidden" value="<%= user._id %>" name="userId" />
   <button
     class="hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg p-1.5 inline-flex items-center hover:ring-4 hover:outline-none hover:ring-blue-300 dark:focus:ring-blue-800"
+    onclick="likeTweet(this)"
   >
     <svg
-      class="w-6 h-6 text-gray-800 dark:text-white fill-rose-800"
+      class="w-6 h-6 text-gray-800 dark:text-white <%= tweet.liked ? 'fill-rose-800':'' %>"
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -17,10 +25,11 @@
         d="M11 4C5.5-1.5-1.5 5.5 4 11l7 7 7-7c5.458-5.458-1.542-12.458-7-7Z"
       />
     </svg>
-    <span class="text-gray-800 dark:text-white pl-2">250</span>
+    <span class="text-gray-800 dark:text-white pl-2"><%= tweet.likesNo %></span>
   </button>
   <button
     class="hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg p-1.5 inline-flex items-center hover:ring-4 hover:outline-none hover:ring-blue-300 dark:focus:ring-blue-800"
+    onclick="location.href='<%= '/'+tweet.creator.nickname+'/'+tweet._id %>';"
   >
     <svg
       class="w-6 h-6 text-gray-800 dark:text-white"

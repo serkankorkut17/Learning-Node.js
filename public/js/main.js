@@ -1,3 +1,31 @@
+const likeTweet = btn => {
+  const tweetId = btn.parentNode.querySelector('[name=tweetId]').value;
+  const creatorNickname = btn.parentNode.querySelector(
+    '[name=creatorNickname]'
+  ).value;
+  const userId = btn.parentNode.querySelector('[name=userId]').value;
+
+  const child = btn.children[0];
+
+  fetch('/' + creatorNickname + '/' + tweetId + '/like', {
+    method: 'POST',
+  })
+    .then(result => {
+      return result.json();
+    })
+    .then(data => {
+      console.log(data);
+      if (data.action === 'like') {
+        child.classList.add('fill-rose-800');
+      } else {
+        child.classList.remove('fill-rose-800');
+      }
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
 /* const body = document.querySelector('html');
 
 localStorage.getItem('darkMode') === 'true'

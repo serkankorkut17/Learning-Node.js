@@ -44,7 +44,7 @@
           </h5>
         </div>
         <p
-          class="break-words break-all mb-3 font-normal text-gray-700 dark:text-gray-400 overflow-scroll"
+          class="break-words break-all mb-3 font-normal text-gray-700 dark:text-gray-400 overflow-y-auto no-scrollbar"
         >
           <%= tweet.content %>
         </p>
@@ -57,7 +57,7 @@
       />
       <% } %>
     </a>
-    <%- include('./includes/post-buttons.ejs') %>
+    <%- include('./includes/post-buttons.ejs',{user:user, tweet:tweet }) %>
   </div>
 </div>
 
