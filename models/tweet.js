@@ -18,11 +18,8 @@ const tweetSchema = new Schema(
     },
     likes: [
       {
-        userId: {
-          type: Schema.Types.ObjectId,
-          ref: 'User',
-          required: true,
-        },
+        type: Schema.Types.ObjectId,
+        ref: 'User',
       },
     ],
     comments: [

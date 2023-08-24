@@ -10,11 +10,17 @@ exports.getTweets = async (req, res, next) => {
 
   tweets.forEach(tweet => {
     tweet.likes.find(element => {
-      if (element.userId.toString() === user._id.toString()) {
+      if (element.toString() === user._id.toString()) {
         tweet.liked = true;
       }
+      user.savedTweets.find(element => {
+        if (element.toString() === tweet._id.toString()) {
+          tweet.saved = true;
+        }
+      });
     });
     tweet.likesNo = tweet.likes.length;
+    tweet.commentsNo = tweet.comments.length;
   });
 
   if (req.session.isLoggedIn) {
@@ -74,11 +80,17 @@ exports.getProfile = async (req, res, next) => {
 
   tweets.forEach(tweet => {
     tweet.likes.find(element => {
-      if (element.userId.toString() === user._id.toString()) {
+      if (element.toString() === user._id.toString()) {
         tweet.liked = true;
       }
+      user.savedTweets.find(element => {
+        if (element.toString() === tweet._id.toString()) {
+          tweet.saved = true;
+        }
+      });
     });
     tweet.likesNo = tweet.likes.length;
+    tweet.commentsNo = tweet.comments.length;
   });
 
   res.render('profile', {
@@ -104,7 +116,7 @@ exports.getOneTweet = (req, res, next) => {
   const tweetId = req.tweetId;
   const user = req.user;
   const nickname = req.userNickname;
-  console.log(tweetId + ' ' + nickname + ' ' + user);
+  /* console.log(tweetId + ' ' + nickname + ' ' + user); */
 
   Tweet.findById(tweetId)
     .populate('creator')
@@ -113,13 +125,20 @@ exports.getOneTweet = (req, res, next) => {
         return new Error('No tweet found.');
       }
       tweet.likes.find(element => {
-        if (element.userId.toString() === user._id.toString()) {
+        if (element.toString() === user._id.toString()) {
           tweet.liked = true;
         }
       });
       tweet.likesNo = tweet.likes.length;
+      tweet.commentsNo = tweet.comments.length;
 
-      console.log(tweet);
+      user.savedTweets.find(element => {
+        if (element.toString() === tweet._id.toString()) {
+          tweet.saved = true;
+        }
+      });
+
+      /* console.log(tweet); */
       res.render('tweet', {
         pageTitle: 'Twitter',
         path: '/' + nickname + '/' + tweetId,
@@ -144,15 +163,13 @@ exports.likeTweet = (req, res, next) => {
         return new Error('No tweet found.');
       }
 
-      const found = tweet.likes.find(
-        element => element.userId.toString() === userId
-      );
+      const found = tweet.likes.find(element => element.toString() === userId);
       if (found) {
         tweet.likes.remove(found);
-        res.status(200).json({ action: 'unlike' });
+        res.status(200).json({ action: 'unlike', likes: tweet.likes.length });
       } else {
-        tweet.likes.push({ userId: user._id });
-        res.status(200).json({ action: 'like' });
+        tweet.likes.push(user._id);
+        res.status(200).json({ action: 'like', likes: tweet.likes.length });
       }
       /* console.log(tweet); */
       tweet.save();
@@ -162,4 +179,64 @@ exports.likeTweet = (req, res, next) => {
       error.httpStatusCode = 500;
       return next(error);
     });
+};
+
+exports.saveTweet = (req, res, next) => {
+  const tweetId = req.tweetId;
+  const user = req.user;
+  const userId = user._id.toString();
+
+  Tweet.findById(tweetId)
+    .then(tweet => {
+      if (!tweet) {
+        return new Error('No tweet found.');
+      }
+
+      const found = user.savedTweets.find(
+        element => element.toString() === tweetId
+      );
+      if (found) {
+        user.savedTweets.remove(found);
+        res.status(200).json({ action: 'unsave' });
+      } else {
+        user.savedTweets.push(tweetId);
+        res.status(200).json({ action: 'save' });
+      }
+      /* console.log(tweet); */
+      user.save();
+    })
+    .catch(err => {
+      const error = new Error(err);
+      error.httpStatusCode = 500;
+      return next(error);
+    });
+};
+
+exports.getSavedTweets = async (req, res, next) => {
+  const user = req.user;
+  const tweets = await Tweet.find({ _id: { $in: user.savedTweets } })
+    .populate('creator')
+    .sort({ createdAt: -1 });
+  /* console.log(tweets); */
+
+  tweets.forEach(tweet => {
+    tweet.likes.find(element => {
+      if (element.toString() === user._id.toString()) {
+        tweet.liked = true;
+      }
+      user.savedTweets.find(element => {
+        if (element.toString() === tweet._id.toString()) {
+          tweet.saved = true;
+        }
+      });
+    });
+    tweet.likesNo = tweet.likes.length;
+    tweet.commentsNo = tweet.comments.length;
+  });
+
+  res.render('saved', {
+    pageTitle: 'Twitter - Saved Tweets',
+    path: '/saved',
+    tweets: tweets,
+  });
 };

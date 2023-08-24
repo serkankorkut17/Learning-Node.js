@@ -26,12 +26,6 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  tweets: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Tweet',
-    },
-  ],
   savedTweets: [
     {
       type: Schema.Types.ObjectId,

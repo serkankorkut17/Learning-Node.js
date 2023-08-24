@@ -10,9 +10,9 @@ router.get('/', isAuth, (req, res, next) => {
   res.redirect('/home');
 });
 router.get('/home', isAuth, userController.getTweets);
-router.post('/post-tweet', isAuth, userController.postTweet);
-
 router.get('/users', isAuth, userController.getUsers);
+router.get('/saved', isAuth, userController.getSavedTweets);
+router.post('/post-tweet', isAuth, userController.postTweet);
 
 router.param('userNickname', (req, res, next, userNickname) => {
   console.log('Fetching user with nickname: ' + userNickname);
@@ -30,6 +30,8 @@ router.get('/:userNickname', isAuth, userController.getProfile);
 router.param('tweetId', (req, res, next, tweetId) => {
   console.log('Fetching tweet with id: ' + tweetId);
   req.tweetId = tweetId;
+  console.log(tweetId);
+
   if (!mongoose.Types.ObjectId.isValid(tweetId)) {
     return res.redirect('/home');
   }
@@ -42,7 +44,7 @@ router.param('tweetId', (req, res, next, tweetId) => {
   next();
 });
 router.get('/:userNickname/:tweetId', isAuth, userController.getOneTweet);
-
 router.post('/:userNickname/:tweetId/like', isAuth, userController.likeTweet);
+router.post('/:userNickname/:tweetId/save', isAuth, userController.saveTweet);
 
 module.exports = router;

@@ -46,13 +46,16 @@
         d="M5 5h9M5 9h5m8-8H2a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h4l3.5 4 3.5-4h5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1Z"
       />
     </svg>
-    <span class="text-gray-800 dark:text-white pl-2">5</span>
+    <span class="text-gray-800 dark:text-white pl-2"
+      ><%= tweet.commentsNo %></span
+    >
   </button>
   <button
     class="hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg p-1.5 inline-flex items-center hover:ring-4 hover:outline-none hover:ring-blue-300 dark:focus:ring-blue-800"
+    onclick="saveTweet(this)"
   >
     <svg
-      class="w-6 h-6 text-gray-800 dark:text-white fill-sky-400"
+      class="w-6 h-6 text-gray-800 dark:text-white <%= tweet.saved ? 'fill-sky-400':'' %>"
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
       fill="none"

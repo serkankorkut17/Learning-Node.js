@@ -1,0 +1,44 @@
+<%- include('./includes/first.ejs') %>
+<div
+  class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14 flex flex-col"
+>
+  <ul class="max-w-md divide-y divide-gray-200 dark:divide-gray-700">
+    <% for (tweet of tweets) { %>
+    <li class="p-4 sm:p-8">
+      <a
+        href="/<%= tweet.creator.nickname %>/<%= tweet._id %>"
+        class="flex flex-col bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-fit hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 mx-auto h-full max-w-screen-md justify-between"
+      >
+        <div class="flex flex-col h-full p-4 leading-normal max-h-[20vh]">
+          <div class="flex">
+            <img
+              class="w-8 h-8 rounded-full basis-auto"
+              src="/<%= tweet.creator.imageUrl %>"
+              alt="tweet owner photo"
+            />
+            <h5
+              class="basis-full px-4 mb-2 text-xl font-bold tracking-tight text-sky-500 dark:text-white justify-self-start self-start"
+            >
+              <%= tweet.creator.firstName + " " + tweet.creator.lastName %>
+            </h5>
+          </div>
+          <p
+            class="break-words break-all mb-3 font-normal text-gray-700 dark:text-gray-400 overflow-y-auto no-scrollbar"
+          >
+            <%= tweet.content %>
+          </p>
+        </div>
+        <% if (tweet.imageUrl) { %>
+        <img
+          class="object-cover w-full rounded-lg h-96 md:h-auto md:w-48"
+          src="/<%= tweet.imageUrl %>"
+          alt="tweet image"
+        />
+        <% } %>
+      </a>
+      <%- include('./includes/post-buttons.ejs', {user:user, tweet:tweet }) %>
+    </li>
+    <% } %>
+  </ul>
+</div>
+<%- include('./includes/last.ejs') %>

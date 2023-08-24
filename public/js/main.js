@@ -5,7 +5,8 @@ const likeTweet = btn => {
   ).value;
   const userId = btn.parentNode.querySelector('[name=userId]').value;
 
-  const child = btn.children[0];
+  const svgChild = btn.children[0];
+  const spanChild = btn.children[1];
 
   fetch('/' + creatorNickname + '/' + tweetId + '/like', {
     method: 'POST',
@@ -16,9 +17,37 @@ const likeTweet = btn => {
     .then(data => {
       console.log(data);
       if (data.action === 'like') {
-        child.classList.add('fill-rose-800');
+        svgChild.classList.add('fill-rose-800');
       } else {
-        child.classList.remove('fill-rose-800');
+        svgChild.classList.remove('fill-rose-800');
+      }
+      spanChild.textContent = data.likes;
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+const saveTweet = btn => {
+  const tweetId = btn.parentNode.querySelector('[name=tweetId]').value;
+  const creatorNickname = btn.parentNode.querySelector(
+    '[name=creatorNickname]'
+  ).value;
+  const userId = btn.parentNode.querySelector('[name=userId]').value;
+  const svgChild = btn.children[0];
+
+  fetch('/' + creatorNickname + '/' + tweetId + '/save', {
+    method: 'POST',
+  })
+    .then(result => {
+      return result.json();
+    })
+    .then(data => {
+      console.log(data);
+      if (data.action === 'save') {
+        svgChild.classList.add('fill-sky-400');
+      } else {
+        svgChild.classList.remove('fill-sky-400');
       }
     })
     .catch(err => {
