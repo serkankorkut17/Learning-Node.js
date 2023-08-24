@@ -24,7 +24,7 @@ const tweetSchema = new Schema(
     ],
     comments: [
       {
-        userId: {
+        creator: {
           type: Schema.Types.ObjectId,
           ref: 'User',
           required: true,
