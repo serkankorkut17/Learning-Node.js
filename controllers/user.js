@@ -41,6 +41,7 @@ exports.postTweet = (req, res, next) => {
   const tweetContent = req.body.tweet_content;
   const image = req.file;
   let tweet = null;
+
   if (image) {
     let imageUrl = image.path;
     fileHelper.moveFile(imageUrl, 'images/tweets/' + image.filename);
@@ -185,7 +186,6 @@ exports.likeTweet = (req, res, next) => {
 exports.saveTweet = (req, res, next) => {
   const tweetId = req.tweetId;
   const user = req.user;
-  const userId = user._id.toString();
 
   Tweet.findById(tweetId)
     .then(tweet => {
@@ -232,7 +232,7 @@ exports.commentTweet = (req, res, next) => {
   const user = req.user;
   const comment = req.body.comment;
   const creatorNickname = req.userNickname;
-  console.log(comment);
+  /* console.log(comment); */
 
   Tweet.findById(tweetId)
     .then(tweet => {

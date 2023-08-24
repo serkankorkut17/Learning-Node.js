@@ -12,6 +12,7 @@ const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const isAuth = require('./middleware/is-auth');
 const User = require('./models/user');
+const constants = require('./constants');
 
 const app = express();
 
@@ -22,11 +23,8 @@ app.set('view engine', 'ejs');
 app.set('views', 'views');
 app.use(cookieParser());
 
-const MONGODB_URI =
-  'mongodb+srv://serkankorkut:118909Gs.@serkan.dipkqr1.mongodb.net/test';
-
 const store = new MongoDBStore({
-  uri: MONGODB_URI,
+  uri: constants.MONGODB_URI,
   collection: 'sessions',
 });
 
@@ -68,7 +66,7 @@ app.use(
   })
 );
 app.use((req, res, next) => {
-  console.log('middleware-2');
+  /* console.log('middleware-2'); */
   if (!req.session.user) {
     return next();
   }
@@ -86,7 +84,7 @@ app.use((req, res, next) => {
 });
 
 app.use((req, res, next) => {
-  console.log('middleware-1');
+  /* console.log('middleware-1'); */
   res.locals.isAuthenticated = req.session.isLoggedIn;
   res.locals.darkMode = req.cookies.darkMode === 'true' ? true : false;
   res.locals.user = req.user;
@@ -101,25 +99,6 @@ app.post('/dark-mode', (req, res, next) => {
   backURL = req.header('Referer') || '/';
   res.redirect(backURL);
 });
-
-/* app.get('/', (req, res, next) => {
-  if (req.session.isLoggedIn) {
-    res.render('tweets', {
-      pageTitle: 'Twitter',
-      path: '/',
-      oldInput: {
-        tweet_content: '',
-      },
-      errorMessage: '',
-      validationErrors: [],
-    });
-  } else {
-    res.render('main', {
-      pageTitle: 'Twitter',
-      path: '/',
-    });
-  }
-}); */
 
 app.use(authRoutes);
 app.use(userRoutes);
@@ -141,9 +120,9 @@ app.use('/404', errorController.get404);
 }); */
 
 mongoose
-  .connect(MONGODB_URI)
+  .connect(constants.MONGODB_URI)
   .then(result => {
-    app.listen(3000);
+    app.listen(constants.PORT);
   })
   .catch(err => {
     console.log(err);

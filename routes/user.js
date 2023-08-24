@@ -30,7 +30,6 @@ router.get('/:userNickname', isAuth, userController.getProfile);
 router.param('tweetId', (req, res, next, tweetId) => {
   console.log('Fetching tweet with id: ' + tweetId);
   req.tweetId = tweetId;
-  console.log(tweetId);
 
   if (!mongoose.Types.ObjectId.isValid(tweetId)) {
     return res.redirect('/home');
