@@ -51,10 +51,5 @@ npm install --save-dev @types/body-parser
 
 openssl req -nodes -new -x509 -keyout server.key -out server.cert
 
-
-mongodb+srv://serkankorkut:118909Gs.@serkan.dipkqr1.mongodb.net/?retryWrites=true&w=majority
-
-
-
 graphql  ==> subscriptions
 npm install tailwindcss postcss autoprefixer postcss-cli
